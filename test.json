@@ -1,0 +1,57 @@
+{
+  "people": [
+	{
+	  "name": "Bob",
+	  "children": [
+		{
+		  "name": "Jan",
+		  "children": []
+		},
+		{
+		  "name": "Don",
+		  "children": [
+			{
+			  "name": "Ted",
+			  "children": []
+			},
+			{
+			  "name": "Ben",
+			  "children": [
+				{
+				  "name": "Joe",
+				  "children": [
+					{
+					  "name": "Ali",
+					  "children": []
+					},
+					{
+					  "name": "Ken",
+					  "children": []
+					}
+				  ]
+				}
+			  ]
+			},
+			{
+			  "name": "Doug",
+			  "children": []
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "name": "Ann",
+	  "children": [
+		{
+		  "name": "Eve",
+		  "children": []
+		},
+		{
+		  "name": "Hal",
+		  "children": []
+		}
+	  ]
+	}
+  ]
+}
