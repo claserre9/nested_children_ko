@@ -4,36 +4,16 @@ const Person = function (name, children) {
 };
 
 const PeopleModel = function () {
-	this.people = ko.observableArray([
-		new Person("Bob", [
-			new Person("Jan"),
-			new Person("Don", [
-				new Person("Ted"),
-				new Person("Ben", [
-					new Person("Joe", [
-						new Person("Ali"),
-						new Person("Ken")
-					])
-				]),
-				new Person("Doug")
-			])
-		]),
-		new Person("Ann", [
-			new Person("Eve"),
-			new Person("Hal")
-		])
-	]);
+	this.people = ko.observableArray([]);
 
 	this.addChild = function (name, parentArray) {
 		parentArray.push(new Person(name));
 	};
 
-	this.doSomething = function(formElement) {
-		let context = ko.contextFor(document.getElementById('people'))
-		let str = JSON.stringify(ko.toJS(context.$data), undefined, 4);
-		output(syntaxHighlight(str))
-		print_recursive(context.$data.people())
+	this.addPerson =  function (person) {
+		this.people.push(new Person("", []))
 	}
+
 };
 
 ko.applyBindings(new PeopleModel());
@@ -59,6 +39,14 @@ people_element.addEventListener('click', function (ev) {
 
 })
 
+save_btn.addEventListener('click', function (ev) {
+	let context = ko.contextFor(document.getElementById('people'))
+	let str = JSON.stringify(ko.toJS(context.$data), undefined, 4);
+	output(syntaxHighlight(str))
+	// print_recursive(context.$data.people())
+
+})
+
 
 function print_recursive(people) {
 	for (const person of people) {
@@ -70,7 +58,15 @@ function print_recursive(people) {
 }
 
 function output(inp) {
-	document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+	let pre_tag = document.createElement('pre')
+	pre_tag.id = 'pre_tag'
+	pre_tag.innerHTML = inp
+
+	let existing_pretag = document.getElementById('pre_tag')
+	if(existing_pretag !== null){
+		document.getElementById('json_data').removeChild(existing_pretag)
+	}
+	document.getElementById('json_data').appendChild(pre_tag);
 }
 
 

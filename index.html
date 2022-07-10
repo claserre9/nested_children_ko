@@ -23,23 +23,28 @@
 </head>
 <body>
 
+
 <div class="container mx-auto my-5">
     <h3>Demo</h3>
+    <button type="button" data-bind="click : addPerson" class="btn btn-outline-success">Add new Person</button>
     <ul id="people" data-bind='template: { name: "personTmpl", foreach: people }'>
     </ul>
-    <form action="" method="post" data-bind="submit: doSomething">
-        <input type="submit" class="btn btn-primary mb-5" value="Save" id="save_data">
-    </form>
+
+    <input type="submit" class="btn btn-primary mb-5" value="Save" id="save_data">
+
 
 
     <script id="personTmpl" type="text/html">
-        <li>
-            <label><input data-bind='textInput:  $index() + " " + $data.name()'></label>
-            <a class="btn btn-danger btn-sm remove" href="#">Delete</a>&nbsp;<a class="btn btn-info btn-sm add" href="#">Add</a>
+        <li class="m-2">
+            <label><input data-bind='textInput: name' class="form-control"></label>
+            <a class="btn btn-danger btn-sm remove" href="#">Delete</a>&nbsp;<a class="btn btn-info btn-sm add" href="#">Add child</a>
             <ul data-bind='template: { name: "personTmpl", foreach: children }'></ul>
         </li>
     </script>
+    <div class="p-4" id="json_data"></div>
 </div>
+
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
